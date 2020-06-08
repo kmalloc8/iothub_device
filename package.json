@@ -3,5 +3,9 @@
   "version": "1.0.0",
   "main": "app.js",
   "author": "Gavin",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1",
+    "mqtt": "^4.1.0"
+  }
 }
