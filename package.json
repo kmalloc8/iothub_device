@@ -1,0 +1,7 @@
+{
+  "name": "iothub_device",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Gavin",
+  "license": "MIT"
+}
