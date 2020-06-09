@@ -4,21 +4,27 @@ var mqtt = require('mqtt')
 const EventEmitter = require('events')
 
 class IotDevice extends EventEmitter {
-    constructor({ serverAddress = "logletech.top:8883", productName, deviceName, secret } = {}) {
+    constructor({ serverAddress = "logletech.top:8883", productName, deviceName, secret, clientID } = {}) {
         super();
         this.serverAddress = `mqtts://${serverAddress}`
         this.productName = productName
         this.deviceName = deviceName
         this.secret = secret
         this.username = `${this.productName}/${this.deviceName}`
+        if (clientID != null) {
+            this.clientIdentifier = `${this.username}/${clientID}`
+        } else {
+            this.clientIdentifier = this.username
+        }
     }
 
     connect() {
         this.client = mqtt.connect(this.serverAddress, {
             rejectUnauthorized: false,
-
             username: this.username,
-            password: this.secret
+            password: this.secret,
+            clientId: this.clientIdentifier,
+            clean: false
         })
 
         var self = this
