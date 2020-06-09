@@ -1,10 +1,11 @@
 // samples/conect_to_server.js
+require('dotenv').config();
 var IotDevice = require('../sdk/iot_device')
 
 var device = new IotDevice({
-    productName: "IotApp",
-    deviceName: "wBB7Owha2",
-    secret: "MRjagMnjkl"
+    productName: process.env.PRODUCT_NAME,
+    deviceName: process.env.DEVICE_NAME,
+    secret: process.env.SECRET
 })
 
 device.on("online", function () {
